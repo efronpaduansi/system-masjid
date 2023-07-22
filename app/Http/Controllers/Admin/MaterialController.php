@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Material;
+use App\Models\Pembangunan;
 Use Alert;
 class MaterialController extends Controller
 {
@@ -24,11 +25,13 @@ class MaterialController extends Controller
 
     public function create(){
         $code = $this->codeGenerator();
-        return view('admin.material.form_create', compact('code'));
+        $master = Pembangunan::orderBy('id', 'desc')->get();
+        return view('admin.material.form_create', compact('code', 'master'));
     }
 
     public function store(Request $request, Material $material){
         $data = [
+            'pembangunan_id' => $request->pembangunan_id, 
             'code' => $request->code,
             'name' => $request->name,
             'description' => $request->description,
@@ -50,11 +53,13 @@ class MaterialController extends Controller
 
     public function edit($id, Material $material){
         $material = $material->findOrFail($id);
-        return view('admin.material.form_edit', compact('material'));
+        $master = Pembangunan::orderBy('id', 'desc')->get();
+        return view('admin.material.form_edit', compact('material', 'master'));
     }
 
     public function update(Request $request, $id, Material $material){
         $data = [
+            'pembangunan_id' => $request->pembangunan_id,
             'code' => $request->code,
             'name' => $request->name,
             'description' => $request->description,

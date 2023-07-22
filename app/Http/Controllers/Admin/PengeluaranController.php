@@ -15,7 +15,7 @@ class PengeluaranController extends Controller
     public function index(){
        $totalKas = KasMasjid::sum('amount');
        $totalAnggaran = Anggaran::sum('amount');
-       $totalPengeluaran = Pengeluaran::sum('amount');
+       $totalPengeluaran = Pengeluaran::sum('total');
        $totalPembangunan = Pembangunan::sum('amount');
         return view('admin.pengeluaran.analisa', compact('totalKas','totalAnggaran','totalPengeluaran','totalPembangunan'));
     }

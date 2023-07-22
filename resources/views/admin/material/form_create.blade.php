@@ -19,6 +19,17 @@
                 </div>
             </div>
             <div class="form-group row">
+                <label class="control-label col-md-3">Master Pembangunan <small class="text-danger">*</small></label>
+                <div class="col-md-4">
+                <select name="pembangunan_id" id="pembangunan_id" class="form-control">
+                    <option value="" disabled selected hidden>Klik untuk pilih</option>
+                    @foreach ($master as $item)
+                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                    @endforeach
+                </select>
+                </div>
+            </div>
+            <div class="form-group row">
                 <label class="control-label col-md-3">Nama <small class="text-danger">*</small></label>
                 <div class="col-md-9">
                     <input class="form-control" type="text" name="name" placeholder="Masukan nama material" autofocus>
@@ -81,6 +92,9 @@
     function validate() {
         $("#myForm").validate({
             rules:{
+                pembangunan_id:{
+                    required: true,
+                },
                 name:{
                     required: true,
                 },
@@ -102,6 +116,7 @@
                 }
             },
             messages:{
+                pembangunan_id: "<p class='text-danger'>Kolom ini diperlukan</p>",
                 name: "<p class='text-danger'>Kolom ini diperlukan</p>",
                 unit: "<p class='text-danger'>Kolom ini diperlukan</p>",
                 unit_price:{

@@ -17,9 +17,9 @@ class PembangunanController extends Controller
 
     public function store(Request $request, Pembangunan $pembangunan){
         $data = [
+            'anggaran_id' => $request->anggaran_id,
             'name' => $request->name,
             'description' => $request->description,
-            'anggaran_id' => $request->anggaran_id,
             'amount' => $request->amount,
             'date' => $request->date
         ];
