@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pengeluaran', function (Blueprint $table) {
+        Schema::create('kas_masjid', function (Blueprint $table) {
             $table->id();
-            $table->string('type', 128);
-            $table->integer('total');
+            $table->string('title', 128);
+            $table->string('description', 256);
+            $table->integer('amount');
             $table->date('date');
-            $table->foreignId('created_by')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pengeluaran');
+        Schema::dropIfExists('kas_masjid');
     }
 };

@@ -13,15 +13,16 @@ return new class extends Migration
     {
         Schema::create('material', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('pembangunan_id')->references('id')->on('pembangunan')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('code', 20);
-            $table->string('name', 100);
-            $table->text('description');
-            $table->string('unit', 10);
+            $table->unsignedBigInteger('pembangunan_id');
+            $table->foreign('pembangunan_id')->references('id')->on('pembangunan')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('code', 50);
+            $table->string('name', 128);
+            $table->string('description', 256);
+            $table->string('unit', 50);
             $table->integer('unit_price');
             $table->integer('amount');
             $table->integer('total');
-            $table->timestamp('order_date');
+            $table->date('order_date');
             $table->timestamps();
         });
     }
