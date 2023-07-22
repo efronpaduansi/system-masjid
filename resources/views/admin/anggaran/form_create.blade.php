@@ -13,6 +13,17 @@
             @csrf
             @method('POST')
             <div class="form-group row">
+                <label class="control-label col-md-3">Master Kas <small class="text-danger">*</small></label>
+                <div class="col-md-4">
+                <select name="kas_id" id="kas_id" class="form-control">
+                    <option value="" disabled selected hidden>Klik untuk pilih</option>
+                    @foreach ($kas as $k)
+                        <option value="{{ $k->id }}">{{ $k->title }}</option>
+                    @endforeach
+                </select>
+                </div>
+            </div>
+            <div class="form-group row">
                 <label class="control-label col-md-3">Nama Anggaran <small class="text-danger">*</small></label>
                 <div class="col-md-4">
                     <input class="form-control" type="text" name="name" placeholder="Masukan nama anggaran">
@@ -70,6 +81,9 @@
     function validate() {
         $("#myForm").validate({
             rules:{
+                kas_id:{
+                    required: true,
+                },
                 name:{
                     required: true,
                 },
@@ -89,6 +103,7 @@
                 }
             },
             messages:{
+                kas_id: "<p class='text-danger'>Kolom ini diperlukan</p>",
                 name: "<p class='text-danger'>Kolom ini diperlukan</p>",
                 description: "<p class='text-danger'>Kolom ini diperlukan</p>",
                 amount:{

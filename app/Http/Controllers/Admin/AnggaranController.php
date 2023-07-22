@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Anggaran;
 use App\Models\Pembangunan;
 use App\Models\User;
+use App\Models\KasMasjid;
 use Alert;
 class AnggaranController extends Controller
 {
@@ -17,11 +18,13 @@ class AnggaranController extends Controller
 
     public function create(User $user){
         $users = $user::orderBy('name', 'asc')->get();
-        return view('admin.anggaran.form_create', compact('users'));
+        $kas = KasMasjid::orderBy('id', 'desc')->get();
+        return view('admin.anggaran.form_create', compact('users', 'kas'));
     }
 
     public function store(Request $request, Anggaran $anggaran){
         $data = [
+            'kas_id' => $request->kas_id,
             'name' => $request->name,
             'description' => $request->description,
             'amount' => $request->amount,
