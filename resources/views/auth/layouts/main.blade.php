@@ -34,8 +34,11 @@
     <script src="{{ asset('backend/js/popper.min.js') }}"></script>
     <script src="{{ asset('backend/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('backend/js/main.js') }}"></script>
+    {{-- Include Jquery Validation --}}
+    <script src="{{ asset('vendor/validator/dist/jquery.validate.min.js') }}"></script>
     <!-- The javascript plugin to display page loading on top-->
     <script src="{{ asset('backend/js/plugins/pace.min.js') }}"></script>
+    
     <script type="text/javascript">
       // Login Page Flipbox control
       $('.login-content [data-toggle="flip"]').click(function() {
