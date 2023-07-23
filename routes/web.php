@@ -13,13 +13,14 @@ use App\Http\Controllers\Admin\PengaturanController;
 
 
 Route::controller(AuthController::class)->group(function() {
-    Route::get('/', 'index')->name('auth.index');
-    Route::post('/login', 'login')->name('auth.do_login');
+    Route::get('/', 'index')->name('login');
+    Route::post('/login', 'authenticate')->name('auth.do_login');
     Route::get('/register', 'register')->name('auth.register');
     Route::post('/register', 'doRegister')->name('auth.do_register');
+    Route::get('/logout', 'logout')->name('auth.logout');
 });
 
-Route::prefix('admin')->group(function() {
+Route::prefix('admin')->middleware('auth')->group(function() {
     Route::controller(DashboardController::class)->group(function() {
         Route::get('/', 'index')->name('dashboard.index');
     });
