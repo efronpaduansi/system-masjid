@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Material;
 use App\Models\Pembangunan;
@@ -10,6 +11,15 @@ use App\Models\Pengeluaran;
 Use Alert;
 class MaterialController extends Controller
 {
+    public function __construct(){
+        $this->middleware(function ($request, $next) {
+            if(Auth::user()->role != 'administrator' && Auth::user()->role != 'ketua'){
+                return redirect()->route('404');
+            }
+            return $next($request);
+        });
+    }
+
     private function codeGenerator(){
         $code = 'BRG'.rand(1000,9999);
         $code_exist = Material::where('code',$code)->first();

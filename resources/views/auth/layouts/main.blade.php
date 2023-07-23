@@ -25,9 +25,9 @@
     </section>
     <section class="login-content">
       <div class="logo">
-        @include('sweetalert::alert')
         <h1>Welcome Back</h1>
       </div>
+      @include('sweetalert::alert')
       @yield('auth-box')
     </section>
     <!-- Essential javascripts for application to work-->

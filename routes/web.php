@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Auth\ErrorController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\MaterialController;
 use App\Http\Controllers\Admin\KasMasjidController;
@@ -84,3 +85,5 @@ Route::prefix('admin')->middleware('auth')->group(function() {
   });
 
 });
+
+Route::get('/404', [ErrorController::class, 'notFound'])->name('404');
