@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Material;
 use App\Models\Pembangunan;
+use App\Models\Pengeluaran;
 Use Alert;
 class MaterialController extends Controller
 {
@@ -29,7 +30,7 @@ class MaterialController extends Controller
         return view('admin.material.form_create', compact('code', 'master'));
     }
 
-    public function store(Request $request, Material $material){
+    public function store(Request $request, Material $material, Pengeluaran $pengeluaran){
         $data = [
             'pembangunan_id' => $request->pembangunan_id, 
             'code' => $request->code,
@@ -43,6 +44,13 @@ class MaterialController extends Controller
         ];
 
         if($material->create($data)){
+            $data = [
+                'type' => 'Belanja Material',
+                'total' => $request->unit_price * $request->amount,
+                'date' => $request->order_date,
+                'created_by' => 1
+            ];
+            $storeDataPengeluaran = $pengeluaran->create($data);
             Alert::success('Sukses', 'Simpan berhasil!');
             return to_route('material.index');
         }else{

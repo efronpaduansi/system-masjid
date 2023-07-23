@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Alert;
 use App\Models\Pembangunan;
+use App\Models\Pengeluaran;
 use App\Models\Anggaran;
 class PembangunanController extends Controller
 {
@@ -15,7 +16,7 @@ class PembangunanController extends Controller
         return view('admin.pembangunan.manage', compact('pembangunan', 'master'));
     }
 
-    public function store(Request $request, Pembangunan $pembangunan){
+    public function store(Request $request, Pembangunan $pembangunan, Pengeluaran $pengeluaran){
         $data = [
             'anggaran_id' => $request->anggaran_id,
             'name' => $request->name,
@@ -25,6 +26,13 @@ class PembangunanController extends Controller
         ];
 
         if($pembangunan->create($data)){
+            $data =[
+                'type' => 'Dana Pembangunan',
+                'total' => $request->amount,
+                'date' => $request->date,
+                'created_by' => 1
+            ];
+            $storeDataPengeluaran = $pengeluaran->create($data);
             Alert::success('Sukses', 'Simpan berhasil!');
             return to_route('pembangunan.index');
         }else{

@@ -17,6 +17,8 @@ class PengeluaranController extends Controller
        $totalAnggaran = Anggaran::sum('amount');
        $totalPengeluaran = Pengeluaran::sum('total');
        $totalPembangunan = Pembangunan::sum('amount');
-        return view('admin.pengeluaran.analisa', compact('totalKas','totalAnggaran','totalPengeluaran','totalPembangunan'));
+
+       $data = Pengeluaran::orderBy('id', 'desc')->take(3)->get();
+        return view('admin.pengeluaran.analisa', compact('totalKas','totalAnggaran','totalPengeluaran','totalPembangunan', 'data'));
     }
 }

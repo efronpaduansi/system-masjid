@@ -56,6 +56,34 @@
     </div>
 </div>
 <div class="tile">
-    <div class="tile-body">Create a beautiful dashboard</div>
+    <div class="tile-body">
+        <div class="row">
+            <div class="col-md-8">
+                <strong>Terakhir ditambahkan</strong>
+                @foreach ($data as $item)
+                    <div class="card bg-info text-light mb-3 mt-3">
+                        <div class="card-header">
+                            <h5>{{ $item->type }}</h5>
+                        </div>
+                        <div class="card-body">
+                            <h4>{{ "Total: Rp. " .number_format($item->total, 0, '.', '.') }}</h4>
+                            <p>{{ date('d/m/Y', strtotime($item->date)) }}</small>
+                        </div>
+                        <div class="card-footer">
+                            {{ "Oleh: " .  $item->user->name  }}
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+            <div class="col-md-4">
+                <strong>Aktivitas Terakhir</strong>
+                @foreach ($data as $item)
+                    <div class="alert alert-secondary mt-3">
+                        <p><strong>{{ $item->user->name }}</strong> telah menambahkan pengeluaran <strong>{{ $item->type }}</strong></p>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
 </div>
 @endsection

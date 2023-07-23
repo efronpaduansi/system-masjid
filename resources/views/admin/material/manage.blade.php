@@ -35,7 +35,7 @@
                             <td>{{ $item->unit }}</td>
                             <td>{{ $item->description }}</td>
                             <td>{{ $item->amount }}</td>
-                            <td>{{ $item->unit_price }}</td>
+                            <td>{{ "Rp. " . number_format($item->unit_price, 0, ',', '.') }}</td>
                             <td>{{ "Rp. " . number_format($item->total, 0, ',', '.') }}</td>
                             <td>{{ date('d/m/Y', strtotime($item->order_date)) }}</td>
                             <td>
