@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\PembangunanController;
 use App\Http\Controllers\Admin\AnggaranController;
 use App\Http\Controllers\Admin\PengeluaranController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\PengaturanController;
 
 
 Route::controller(AuthController::class)->group(function() {
@@ -75,6 +76,10 @@ Route::prefix('admin')->group(function() {
       Route::get('/user/edit/{id}', 'edit')->name('user.edit');
       Route::put('/user/edit/{id}', 'update')->name('user.update');
       Route::get('/user/delete/{id}', 'delete')->name('user.delete');
+  });
+
+  Route::controller(PengaturanController::class)->group(function() {
+    Route::get('/setting', 'index')->name('setting.index');
   });
 
 });

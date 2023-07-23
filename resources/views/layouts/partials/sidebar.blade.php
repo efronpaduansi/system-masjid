@@ -22,6 +22,6 @@
       </li>
       <li><a class="app-menu__item" href="{{ route('pengeluaran.index') }}"><i class="app-menu__icon fas fa-chart-line"></i><span class="app-menu__label">Analisa Pengeluaran</span></a></li>
       <li><a class="app-menu__item" href="{{ route('user.index') }}"><i class="app-menu__icon fas fa-users"></i><span class="app-menu__label">Manajemen Users</span></a></li>
-      <li><a class="app-menu__item" href="docs.html"><i class="app-menu__icon fas fa-cogs"></i><span class="app-menu__label">Pengaturan</span></a></li>
+      <li><a class="app-menu__item" href="{{ route('setting.index') }}"><i class="app-menu__icon fas fa-cogs"></i><span class="app-menu__label">Pengaturan</span></a></li>
     </ul>
   </aside>
