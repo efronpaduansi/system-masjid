@@ -5,11 +5,13 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\UserLoginLog;
 use Alert;
 class PengaturanController extends Controller
 {
     public function index(){
-        return view('admin.pengaturan.setting');
+        $userLog = UserLoginLog::with('user')->orderBy('created_at', 'desc')->take(5)->get();
+        return view('admin.pengaturan.setting', compact('userLog'));    
     }
 
     public function profileUpdate(Request $request, $id, User $user){

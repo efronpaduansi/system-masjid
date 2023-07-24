@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Alert;
+use App\Models\UserLoginLog;
 class AuthController extends Controller
 {
     public function __construct()
@@ -19,7 +20,7 @@ class AuthController extends Controller
         return view('auth.login_form');
     }
 
-    public function authenticate(Request $request){
+    public function authenticate(Request $request, UserLoginLog $userLoginLog){
         $credentials = $request->validate([
             'email' => 'required|email',
             'password' => 'required'
@@ -28,6 +29,11 @@ class AuthController extends Controller
         if(Auth::attempt($credentials))
         {
             $request->session()->regenerate();
+            $data = [
+                'user_id' => Auth::user()->id,
+                'ip_address' => $request->ip()
+            ];
+            $userLoginLog->create($data);
             return redirect()->route('dashboard.index');
         }
 

@@ -69,7 +69,21 @@
             </form>
           </div>
         </div>
-        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
+        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+           <h5 class="mt-3 mb-3">Aktivitas Login Pengguna</h5>
+           @foreach ($userLog as $log)
+               <div class="card bg-info p-2 mb-3">
+                 <div class="card-header">
+                    <p>Aktivitas login</p>
+                 </div>
+                 <div class="card-body">
+                    <p><strong>{{ $log->user->name }}</strong> telah melakukan login pada 
+                     <strong> {{ $log->created_at->diffForHumans() }}</strong>. IP address: {{ $log->ip_address }}
+                    </p>
+                 </div>
+               </div>
+           @endforeach
+        </div>
       </div>
     </div>
 </div>

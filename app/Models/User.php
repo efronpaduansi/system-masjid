@@ -9,7 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Anggaran;
 use App\Models\Pengeluaran;
-
+use App\Models\UserLoginLog;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -59,4 +59,9 @@ class User extends Authenticatable
    public function anggaran(){
      return $this->hasManyThrough(Anggaran::class, 'signed_by', 'id');
   }
+
+    public function user_login_logs()
+    {
+        return $this->hasMany(UserLoginLog::class, 'user_id', 'id');
+    }
 }
