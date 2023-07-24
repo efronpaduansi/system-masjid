@@ -58,7 +58,7 @@ class MaterialController extends Controller
                 'type' => 'Belanja Material',
                 'total' => $request->unit_price * $request->amount,
                 'date' => $request->order_date,
-                'created_by' => 1
+                'created_by' => Auth::user()->id
             ];
             $storeDataPengeluaran = $pengeluaran->create($data);
             Alert::success('Sukses', 'Simpan berhasil!');

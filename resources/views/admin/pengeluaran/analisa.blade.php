@@ -17,7 +17,7 @@
     <div class="col-md-3">
         <div class="card bg-success text-light">
             <div class="card-header">
-               <h5>Total Kas - {{ date('M') }}</h5>
+               <h5>Kas - {{ date('M') }}</h5>
             </div>
             <div class="card-body">
                 <h3>{{ "Rp. " . number_format($totalKas, 0, '.', '.') }}</h3>
@@ -27,7 +27,7 @@
     <div class="col-md-3">
         <div class="card bg-primary text-light">
             <div class="card-header">
-                <h5>Total Anggaran - {{ date('M') }}</h5>
+                <h5>Anggaran - {{ date('M') }}</h5>
             </div>
             <div class="card-body">
                 <h3>{{ "Rp. " . number_format($totalAnggaran, 0, '.', '.') }}</h3>
@@ -37,7 +37,7 @@
     <div class="col-md-3">
         <div class="card bg-secondary text-light">
             <div class="card-header">
-                <h5>Total Pembangunan - {{ date('M') }}</h5>
+                <h5>Pembangunan - {{ date('M') }}</h5>
             </div>
             <div class="card-body">
                 <h3>{{ "Rp. " . number_format($totalPembangunan, 0, '.', '.') }}</h3>
@@ -47,7 +47,7 @@
     <div class="col-md-3">
         <div class="card bg-danger text-light">
             <div class="card-header">
-                <h5>Total Pengeluaran - {{ date('M') }}</h5>
+                <h5>Pengeluaran - {{ date('M') }}</h5>
             </div>
             <div class="card-body">
                 <h3>{{ "Rp. " . number_format($totalPengeluaran, 0, '.', '.') }}</h3>

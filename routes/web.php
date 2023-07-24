@@ -82,6 +82,8 @@ Route::prefix('admin')->middleware('auth')->group(function() {
 
   Route::controller(PengaturanController::class)->group(function() {
     Route::get('/setting', 'index')->name('setting.index');
+    Route::put('/setting/profile/{id}', 'profileUpdate')->name('setting.profile-update');
+    Route::put('/setting/password/{id}', 'passwordUpdate')->name('setting.password-update');
   });
 
 });
