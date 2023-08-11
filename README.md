@@ -21,12 +21,12 @@ Untuk mulai menginstall pastikan pada komputer anda sudah terpasang beberapa sof
 - Buka `localhost/phpmyadmin` lalu buatlah database baru dengan nama `system_masjid` (Nama database bebas)
 Silahkan buka file `.env` lalu sesuaikan pengaturan nama database pada komputer anda. Jika anda pengguna XAMPP maka ubah konfigurasi database sebagai berikut:
 
-    DB_CONNECTION=mysql
-    DB_HOST=127.0.0.1
-    DB_PORT=3306
-    DB_DATABASE=system_masjid
-    DB_USERNAME=root
-    DB_PASSWORD=
+    - **DB_CONNECTION=mysql**
+    - **DB_HOST=127.0.0.1**
+    - **DB_PORT=3306**
+    - **DB_DATABASE=system_masjid**
+    - **DB_USERNAME=root**
+    - **DB_PASSWORD=**
 
 - Jalankan perintah `php artisan migrate --seed` untuk migrasi database
 - Jalankan perintah `php artisan serve` untuk mulai menjalankan aplikasi anda
