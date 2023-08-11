@@ -7,9 +7,10 @@ Baiklah. Jika anda ingin mengunduh sistem ini dan memasangnya pada komputer prib
 ## Sistem Pendukung
 
 Untuk mulai menginstall pastikan pada komputer anda sudah terpasang beberapa software yang dibutuhkan dengan detail sebagai berikut:
-    - **PHP Versi 8.2** atau bisa menggunakan XAMPP dengan versi PHP 8.2
-    - **Composer versi terbaru** anda dapat mendownload di (https://getcomposer.org/download/)
-    - **NodeJS versi terbaru** anda dapat mendownload di (https://nodejs.org/en)
+
+    - **PHP Versi 8.2 atau bisa menggunakan XAMPP dengan versi PHP 8.2**
+    - **Composer versi terbaru anda dapat mendownload di (https://getcomposer.org/download/)**
+    - **NodeJS versi terbaru** anda dapat mendownload di (https://nodejs.org/en)**
 
 ## Installasi
 
