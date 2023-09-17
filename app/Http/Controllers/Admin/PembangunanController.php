@@ -30,7 +30,7 @@ class PembangunanController extends Controller
                 'type' => 'Dana Pembangunan',
                 'total' => $request->amount,
                 'date' => $request->date,
-                'created_by' => Auth::user()->id
+                'created_by' => Auth()->user()->id
             ];
             $storeDataPengeluaran = $pengeluaran->create($data);
             Alert::success('Sukses', 'Simpan berhasil!');

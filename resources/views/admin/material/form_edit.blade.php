@@ -53,7 +53,7 @@
                                 </option>
                                 <option value="Kg">Kg</option>
                                 <option value="Pcs">Pcs</option>
-                                <option value="Pcs">M3</option>
+                                <option value="M3">M3</option>
                             </select>
                         </div>
                     </div>
